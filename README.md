@@ -8,13 +8,13 @@ Esse repositório faz parte do [Curso de Ruby on Rails 6 como API](https://www.y
   <tr>
     <td>Ruby version</td>
     <td>
-      2.7.2
+      3.0.1
     </td>
   </tr>
   <tr>
     <td>Rails version</td>
     <td>
-      6.1.0
+      6.1.4.1
     </td>
   </tr>
   <tr>
@@ -29,8 +29,8 @@ Esse repositório faz parte do [Curso de Ruby on Rails 6 como API](https://www.y
 
 ```bash
 # clonar o projeto
-git clone https://github.com/peimelo/tour_of_heroes.git
-cd tour_of_heroes
+git clone https://github.com/eltonsantos/tour-of-heroes.git
+cd tour-of-heroes
 
 # instalar as dependências do Ruby on Rails
 bundle install
@@ -84,4 +84,4 @@ rails s
 
 Abra o browser no endereço `http://localhost:3000`
 
-Para navegar no projeto em produção acesse [https://tour-of-heros.herokuapp.com](https://tour-of-heros.herokuapp.com/)
+Para navegar no projeto em produção acesse [https://tour-of-heroes-eltonsantos.herokuapp.com](https://tour-of-heroes-eltonsantos.herokuapp.com/)
