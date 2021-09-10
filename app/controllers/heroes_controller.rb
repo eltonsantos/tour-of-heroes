@@ -4,51 +4,36 @@ class HeroesController < ApplicationController
                                password: Rails.application.credentials.authenticate[:password],
                                except: %i[index show]
 
-  before_action :set_hero, only: %i[ show edit update destroy ]
+  before_action :set_hero, only: %i[ show update destroy ]
 
   # GET /heroes or /heroes.json
   def index
     @heroes = Hero.all
+
+    render json: @heroes
   end
 
   # GET /heroes/1 or /heroes/1.json
   def show
-  end
-
-  # GET /heroes/new
-  def new
-    @hero = Hero.new
-  end
-
-  # GET /heroes/1/edit
-  def edit
+    render json: @hero
   end
 
   # POST /heroes or /heroes.json
   def create
     @hero = Hero.new(hero_params)
-
-    respond_to do |format|
-      if @hero.save
-        format.html { redirect_to @hero, notice: "Hero was successfully created." }
-        format.json { render :show, status: :created, location: @hero }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @hero.errors, status: :unprocessable_entity }
-      end
+    if @hero.save
+      render json: @hero, status: :created, location: @hero
+    else
+      render json: @hero.errors, status: :unprocessable_entity
     end
   end
 
   # PATCH/PUT /heroes/1 or /heroes/1.json
   def update
-    respond_to do |format|
-      if @hero.update(hero_params)
-        format.html { redirect_to @hero, notice: "Hero was successfully updated." }
-        format.json { render :show, status: :ok, location: @hero }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @hero.errors, status: :unprocessable_entity }
-      end
+    if @hero.update(hero_params)
+      render json: @hero
+    else
+      render json: @hero.errors, status: :unprocessable_entity
     end
   end
 
