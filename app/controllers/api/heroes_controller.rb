@@ -1,4 +1,4 @@
-class HeroesController < ApplicationController
+class Api::HeroesController < ApplicationController
 
   http_basic_authenticate_with name: Rails.application.credentials.authenticate[:name],
                                password: Rails.application.credentials.authenticate[:password],
@@ -7,6 +7,7 @@ class HeroesController < ApplicationController
   before_action :set_hero, only: %i[ show update destroy ]
 
   # GET /heroes or /heroes.json
+
   def index
     @heroes = Hero.all
 
@@ -21,6 +22,7 @@ class HeroesController < ApplicationController
   # POST /heroes or /heroes.json
   def create
     @hero = Hero.new(hero_params)
+
     if @hero.save
       render json: @hero, status: :created, location: @hero
     else
@@ -40,10 +42,6 @@ class HeroesController < ApplicationController
   # DELETE /heroes/1 or /heroes/1.json
   def destroy
     @hero.destroy
-    respond_to do |format|
-      format.html { redirect_to heroes_url, notice: "Hero was successfully destroyed." }
-      format.json { head :no_content }
-    end
   end
 
   private
