@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(version: 2021_09_11_142734) do
 
   create_table "heroes", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "token", null: false
