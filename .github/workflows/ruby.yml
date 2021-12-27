@@ -2,9 +2,9 @@ name: Ruby
 
 on:
   push:
-    branches: [master]
+    branches: [main]
   pull_request:
-    branches: [master]
+    branches: [main]
 
 jobs:
   tests:
@@ -36,7 +36,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          sudo apt-get -yqq install libpq-dev build-essential libcurl4-openssl-dev
+          sudo apt-get update && sudo apt-get -yqq install libpq-dev build-essential libcurl4-openssl-dev
           bundle install --jobs 4 --retry 3
       - name: Run Tests
         env:
